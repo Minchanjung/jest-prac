@@ -7,13 +7,18 @@ const caesarCipher = (string) => {
     let encrypted = '';
 
     for (let i = 0; i < string.length; i++) {
-        if (string[i] === ' ' || string[i] === ',') {
+        if (string[i] === ' ' || string[i] === ',' || string[i] === '?' || string[i] === '.' || string[i] === '!' || string[i] === "'") {
             encrypted += string[i];
             continue;
         }
         for (let num in cipher) {
             if (string[i] === cipher[num]) {
-                encrypted += cipher[parseInt(num) + 1];
+                if ( num == 26) {
+                    encrypted += cipher[1];
+                } else {
+                    encrypted += cipher[parseInt(num) + 1];
+                }
+                
             }
         }
     }
